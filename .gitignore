@@ -1,3 +1,5 @@
 
 # Este aquivo serve para ignorar arquivos e pastas que não devem ser versionadas pelo git 
 .venv/
+.Dados/
+

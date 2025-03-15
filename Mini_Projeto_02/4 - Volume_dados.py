@@ -50,3 +50,19 @@ valor_compras_loja = f'R$ {valor_compras_loja:.2f}'
 quantidade_compras_loja = df_compras_filter[df_compras_filter['loja'] == principal_loja]['preco'].count()
 col21.metric('Valor de compras no período', valor_compras_loja)
 col22.metric('Quantidade de compras no periodo',quantidade_compras_loja)
+
+st.divider()
+
+principal_vendedor = df_compras_filter['vendedor'].value_counts().index[0]
+st.markdown(f'# Principal vendedor: {principal_vendedor}')
+
+valor_compras_vendedor = df_compras_filter[df_compras_filter['vendedor'] == principal_vendedor]['preco'].sum()
+valor_compras_vendedor = f'R$ {valor_compras_vendedor:.2f}'
+
+valor_comissão_vendedor = df_compras_filter[df_compras_filter['vendedor']==principal_vendedor]['comissão'].sum()
+valor_comissão_vendedor = f'R$ {valor_comissão_vendedor:.2f}'
+
+col31, col32 = st.columns(2)
+
+col31.metric('Valor de compras no período', valor_compras_vendedor)
+col32.metric('Comissão no período', valor_comissão_vendedor)
